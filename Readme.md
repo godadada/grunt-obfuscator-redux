@@ -1,30 +1,47 @@
 
-# grunt-obfuscator
+# grunt-obfuscator-redux
 
-  Obfuscate nodejs projects via Grunt
-
-[![Build Status](https://travis-ci.org/stephenmathieson/grunt-obfuscator.png?branch=master)](https://travis-ci.org/stephenmathieson/grunt-obfuscator)
+  Obfuscate Node.js projects via Grunt. This project was forked from the now-dormant Stephen Mathieson's [grunt-obfuscator](https://github.com/stephenmathieson/grunt-obfuscator), with additional features like multiple targets.
 
 
 ## Installation
 
-    $ npm install grunt-obfuscator --save-dev
+    $ npm install grunt-obfuscator-redux --save-dev
 
 ## Usage
 
 ```js
-grunt.loadNpmTasks('grunt-obfuscator');
+grunt.loadNpmTasks('grunt-obfuscator-redux');
 
 grunt.initConfig({
   obfuscator: {
-    files: [
-      'app.js',
-      'lib/routes/*.js'
-    ],
-    entry: 'app.js',
-    out: 'obfuscated.js',
-    strings: true,
-    root: __dirname
+    app1: {
+      src: [
+        'app1.js',
+        'lib/*.js',
+        'routes/*.js'
+      ],
+      options: {
+        entry: 'app1.js',
+        out: 'obfuscated1.js',
+        strings: true,
+        root: __dirname
+      }
+    },
+    app2: {
+      src: [
+        'app2.js',
+        'lib/*.js',
+        'utils/*.js',
+        'routes/*.js'
+      ],
+      options: {
+        entry: 'app2.js',
+        out: 'obfuscated2.js',
+        strings: true,
+        root: __dirname
+      }
+    }
   }
 });
 ```
@@ -55,7 +72,7 @@ grunt.initConfig({
 
 (The MIT License)
 
-Copyright (c) 2013 Stephen Mathieson &lt;me@stephenmathieson.com&gt;
+Copyright (c) 2015 Ganesh Prasannah &lt;g.prasannah@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
