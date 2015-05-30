@@ -3,6 +3,10 @@
 
   Obfuscate Node.js projects via Grunt. This project was forked from the now-dormant Stephen Mathieson's [grunt-obfuscator](https://github.com/stephenmathieson/grunt-obfuscator), with additional features like multiple targets.
 
+  Credits to [@alaimo](https://github.com/alaimo), who served as the inspiration for this fork.
+
+[![Build Status](https://travis-ci.org/paambaati/grunt-obfuscator-redux.png?branch=master)](https://travis-ci.org/paambaati/grunt-obfuscator-redux)
+
 
 ## Installation
 
