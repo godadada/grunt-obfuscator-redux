@@ -1,6 +1,8 @@
 var obfuscator = require('obfuscator'),
-    obfuscatorCompressDefaults = obfuscator.utils.compress.defaults,
-    fs = require('fs');
+    fs = require('fs'),
+    getDirName = require('path').dirname,
+    mkdirp = require('mkdirp'),
+    obfuscatorCompressDefaults = obfuscator.utils.compress.defaults;
 
 module.exports = function(grunt) {
     grunt.registerMultiTask('obfuscator', 'Obfuscate Node.js projects via Grunt.', function() {
@@ -48,13 +50,18 @@ module.exports = function(grunt) {
                 return fn(err);
             }
 
-            fs.writeFile(opts.out, data, function(err) {
+            mkdirp(getDirName(opts.out), function(err) {
                 if (err) {
                     return fn(err);
                 }
-
-                fn();
+                fs.writeFile(opts.out, data, function(err) {
+                    if (err) {
+                        return fn(err);
+                    }
+                    fn();
+                });
             });
+
         });
     });
 };

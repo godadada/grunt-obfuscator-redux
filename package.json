@@ -1,7 +1,7 @@
 {
   "name": "grunt-obfuscator-redux",
-  "version": "1.0.1",
-  "description": "Obfuscate Node.js projects via Grunt",
+  "version": "1.0.2",
+  "description": "Obfuscate Node.js projects via Grunt.",
   "keywords": [
     "grunt",
     "gruntplugin",
@@ -15,7 +15,8 @@
     "url": "git://github.com/paambaati/grunt-obfuscator-redux.git"
   },
   "dependencies": {
-    "obfuscator": "~0"
+    "obfuscator": "~0",
+    "mkdirp": "~0.5.1"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
