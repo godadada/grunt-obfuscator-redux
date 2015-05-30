@@ -5,7 +5,7 @@
 
   Credits to [@alaimo](https://github.com/alaimo), who served as the inspiration for this fork.
 
-[![Build Status](https://travis-ci.org/paambaati/grunt-obfuscator-redux.png?branch=master)](https://travis-ci.org/paambaati/grunt-obfuscator-redux)
+[![Build Status](https://travis-ci.org/paambaati/grunt-obfuscator-redux.png?branch=master)](https://travis-ci.org/paambaati/grunt-obfuscator-redux) [![npm version](https://badge.fury.io/js/grunt-obfuscator-redux.svg)](http://badge.fury.io/js/grunt-obfuscator-redux)
 
 
 ## Installation
