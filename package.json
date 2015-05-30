@@ -9,6 +9,7 @@
     "obfuscator"
   ],
   "author": "Ganesh 'GP' Prasannah <g.prasannah@gmail.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/paambaati/grunt-obfuscator-redux.git"
