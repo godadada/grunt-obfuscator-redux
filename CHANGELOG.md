@@ -1,10 +1,11 @@
 
-1.0.0 / 2015-05-30
+1.0.1 / 2015-05-30
 ==================
 
  * Forked from https://github.com/stephenmathieson/grunt-obfuscator with new package name.
  * Add support for multiple targets.
  * Clean-up code a bit.
+ * Update README with more examples.
 
 0.1.0 / 2014-02-26
 ==================
