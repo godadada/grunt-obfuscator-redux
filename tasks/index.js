@@ -1,37 +1,60 @@
-
-var obfuscator = require('obfuscator');
-var fs = require('fs');
+var obfuscator = require('obfuscator'),
+    obfuscatorCompressDefaults = obfuscator.utils.compress.defaults,
+    fs = require('fs');
 
 module.exports = function(grunt) {
-  grunt.registerTask('obfuscator', 'Your task description goes here.', function () {
-    var fn = this.async();
-    var entry = option('entry');
-    var root = option('root');
-    var out = option('out');
-    var strings = option('strings');
-    var files = option('files');
+    grunt.registerMultiTask('obfuscator', 'Obfuscate Node.js projects via Grunt.', function() {
+        var fn = this.async(),
+            opts = this.options(),
+            options = new obfuscator.Options(
+                this.filesSrc,
+                opts.root,
+                opts.entry,
+                opts.strings
+            );
 
-    files = grunt.file.expand(files);
-    var options = new obfuscator.Options(files, root, entry, strings);
+        // allow overrides for uglify compressor options.
+        options.compressor = {};
+        [
+            'sequences',
+            'properties',
+            'dead_code',
+            'drop_debugger',
+            'unsafe',
+            'conditionals',
+            'comparisons',
+            'evaluate',
+            'booleans',
+            'loops',
+            'unused',
+            'hoist_funs',
+            'hoist_vars',
+            'if_return',
+            'join_vars',
+            'cascade',
+            'side_effects',
+            'warnings',
+            'global_defs'
+        ].forEach(function(key) {
+            if (opts.hasOwnProperty(key)) {
+                options.compressor[key] = opts[key];
+            } else {
+                options.compressor[key] = obfuscatorCompressDefaults[key];
+            }
+        });
 
-    obfuscator(options, function (err, data) {
-      if (err) {
-        grunt.log.error(err);
-        return fn(false);
-      }
+        obfuscator(options, function(err, data) {
+            if (err) {
+                return fn(err);
+            }
 
-      fs.writeFile(out, data, function (err) {
-        if (err) {
-          grunt.log.error(err);
-          return fn(false);
-        }
+            fs.writeFile(opts.out, data, function(err) {
+                if (err) {
+                    return fn(err);
+                }
 
-        fn();
-      });
+                fn();
+            });
+        });
     });
-  });
-
-  function option(name) {
-    return grunt.config('obfuscator.' + name);
-  }
 };
