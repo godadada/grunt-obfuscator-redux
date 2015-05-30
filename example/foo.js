@@ -1,4 +1,3 @@
-
-exports.foo = function () {
-  return 'foo'
+exports.foo = function() {
+    return 'foo';
 };

@@ -1,4 +1,3 @@
-
-exports.bar = function () {
-  return 'bar'
+exports.bar = function() {
+    return 'bar';
 };

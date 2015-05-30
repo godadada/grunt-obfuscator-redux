@@ -1,15 +1,16 @@
+module.exports = function(grunt) {
+    grunt.loadTasks('../tasks');
 
-module.exports = function (grunt) {
-  grunt.loadTasks('../tasks');
-
-  grunt.initConfig({
-    obfuscator: {
-      files: [
-        './*.js'
-      ],
-      root: __dirname,
-      entry: 'app.js',
-      out: 'out.js'
-    }
-  });
+    grunt.initConfig({
+        obfuscator: {
+            src: [
+                './*.js'
+            ],
+            options: {
+                root: __dirname,
+                entry: 'app.js',
+                out: 'out.js'
+            }
+        }
+    });
 };
