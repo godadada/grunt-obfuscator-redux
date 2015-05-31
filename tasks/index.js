@@ -1,6 +1,6 @@
-var obfuscator = require('obfuscator'),
-    fs = require('fs'),
+var fs = require('fs'),
     getDirName = require('path').dirname,
+    obfuscator = require('obfuscator'),
     mkdirp = require('mkdirp'),
     obfuscatorCompressDefaults = obfuscator.utils.compress.defaults;
 
@@ -49,7 +49,10 @@ module.exports = function(grunt) {
             if (err) {
                 return fn(err);
             }
-
+            if (opts.strings) {
+                data = data.replace(/("|')use strict\1;?/g, '');
+                grunt.log.subhead('"use strict" removed.');
+            }
             mkdirp(getDirName(opts.out), function(err) {
                 if (err) {
                     return fn(err);
@@ -58,6 +61,7 @@ module.exports = function(grunt) {
                     if (err) {
                         return fn(err);
                     }
+                    grunt.log.ok('Obfuscated file "' + opts.out + '" created successfully.');
                     fn();
                 });
             });
