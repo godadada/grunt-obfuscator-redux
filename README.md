@@ -1,7 +1,7 @@
 
 # grunt-obfuscator-redux
 
-  Obfuscate Node.js projects via Grunt. This project was forked from the now-dormant Stephen Mathieson's [grunt-obfuscator](https://github.com/stephenmathieson/grunt-obfuscator), with additional features like multiple targets.
+  Obfuscate Node.js projects via Grunt. This project was forked from the now-dormant Stephen Mathieson's [`grunt-obfuscator`](https://github.com/stephenmathieson/grunt-obfuscator), with additional features like multiple targets.
 
   Credits to [@alaimo](https://github.com/alaimo), who served as the inspiration for this fork.
 
@@ -90,13 +90,21 @@ grunt.initConfig({
 
 ### `strings`
 
-  Boolean option for obfuscating simple strings.  Defaults to `false`. If set to `true`, note that `use strict` has to be removed, as this option encodes all strings to octal representations. I'd suggest using [grunt-remove-usestrict](https://github.com/HAKASHUN/grunt-remove-usestrict) to remove them during build-time.
+  Boolean option for obfuscating simple strings. Defaults to `false`.
 
 ### `root`
 
   The base directory.  Usually `__dirname` works just fine.
 
-## License 
+## Caveats
+
+When obfuscating your project, keep in mind the following scenarios.
+
+#### Your code contains regular expression strings.
+
+If you use regular expressions as strings like `yourInputString.match('^[a-zA-Z0-9]')`, they might not behave as expected after obfuscation. This is a known bug (see [#24](https://github.com/stephenmathieson/node-obfuscator/issues/24)) in the base [`obfuscator`](https://github.com/stephenmathieson/node-obfuscator) package. To work around this, convert them to [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) objects, like `new RegExp(/^[a-zA-Z0-9]/).text(yourInputString)`.
+
+## License
 
 (The MIT License)
 
