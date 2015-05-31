@@ -34,6 +34,9 @@ grunt.initConfig({
     }
   }
 });
+
+// `grunt obfuscate` will obfuscate your code and generate `app.js`.
+grunt.registerTask('obfuscate', ['obfuscator']);
 ```
 
 ## Advanced Usage - Multiple Targets
@@ -72,6 +75,9 @@ grunt.initConfig({
     }
   }
 });
+
+// `grunt obfuscate` will obfuscate your code and generate `app1.js` & `app2.js`.
+grunt.registerTask('obfuscate', ['obfuscator:app1', 'obfuscator:app2']);
 ```
 
 ## Options
