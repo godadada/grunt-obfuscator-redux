@@ -102,7 +102,7 @@ When obfuscating your project, keep in mind the following scenarios.
 
 #### Your code contains regular expression strings.
 
-If you use regular expressions as strings like `yourInputString.match('^[a-zA-Z0-9]')`, they might not behave as expected after obfuscation. This is a known bug (see [#24](https://github.com/stephenmathieson/node-obfuscator/issues/24)) in the base [`obfuscator`](https://github.com/stephenmathieson/node-obfuscator) package. To work around this, convert them to [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) objects, like `new RegExp(/^[a-zA-Z0-9]/).text(yourInputString)`.
+If you use regular expressions as strings like `yourInputString.match('^[a-zA-Z0-9]')`, they might not behave as expected after obfuscation. This is a known bug (see [#24](https://github.com/stephenmathieson/node-obfuscator/issues/24)) in the base [`obfuscator`](https://github.com/stephenmathieson/node-obfuscator) package. To work around this, convert them to [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) objects, like `new RegExp(/^[a-zA-Z0-9]/).test(yourInputString)`.
 
 ## License
 
